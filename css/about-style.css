@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: Poppins, sans-serif;
+    font-size: 1rem; /* Pääfonttikoko suhteessa oletusfonttikokoon */
+    line-height: 1.8; /* Riviväli */
+    color: #333;
+}
+
+main {
+    margin-top: 4rem;
+    width: 80%;
+}
+
+.pre-info {
+    display: flex;
+    align-items: center;
+    padding: 1rem 7rem;
+    gap: 2rem;
+}
+
+.pre-info-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.info-picture {
+    margin-top: 3rem;
+    border-radius: 10%;
+    width: clamp(10rem, 45%, 25rem);
+}
+
+.pre-info-text p {
+    margin: 0;
+}
+
+.minusta {
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 100;
+}
+
+@media (max-width: 800px) {
+    main {
+        width: 100%;
+        margin-top: 5rem;
+    }
+    .pre-info {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2vw, 3rem);
+    padding-top: 3rem;
+}
+
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fact {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.fact p {
+    font-weight: bold;
+}
+
+.emoji {
+    font-size: 2.5rem;
+}
+
+.text-box {
+    max-width: 24rem;
+    text-align: center;
+}
