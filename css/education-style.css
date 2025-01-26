@@ -20,8 +20,12 @@ h2 {
     padding: 2rem 0rem;
 }
 
-h3, p {
+p {
     padding-bottom: 0.6rem;
+}
+
+.laitos {
+    font-weight: 600;
 }
 
 .degree {
