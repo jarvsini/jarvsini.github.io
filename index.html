@@ -1,35 +1,461 @@
 <!DOCTYPE html>
 <html lang="fi">
+<!-- <head>-osiossa on yleistietoja asiakirjasta. Se ei saa sisältää esitettäväksi tarkoitettua tekstiä eikä tekstin muotoiluja. Yleisiä koodeja head-osiossa ovat <title>, <meta> ja <link>. -->
 <head>
+    <!-- <meta> antaa selaimelle tietoa siitä, miten sivun dataa pitää tulkita. Esimerkissä määritellään käytetty merkistö (Unicode), jolloin diakriittiset merkit (ä, ö jne.) tulostuvat oikein. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="css/navbar-style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Portfolio</title> <!--  kertoo dokumentin nimen, joka näkyy yleensä selainikkunassa välilehden otsikkona. -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- yhdistää JavaScriptiin -->
+    <script src="script.js"></script>
 </head>
 <body>
+    <!-- header eli ylätunniste -->
     <header>
-        <nav class="navbar">
-            <a class="selected" href="index.html">Koti</a>
-            <a href="about.html">Minusta</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="education.html">Koulutus</a>
-            <a href="experience.html">Työkokemus</a>
+        <!-- navigointipalkki -->
+        <nav>
+            <div class="kotilinkki">
+                <a href="#koti"><i class="fas fa-home"></i></a>
+            </div>
+            <!-- Hampurilaisvalikko mobiilille -->
+            <!-- Kutsuu JavaScript-funktion avaaSuljeValikko() aina kun painiketta painetaan -->
+            <div class="hampurilaiskuvake"><i class="fa-solid fa-bars"></i></div>
+            <ul>
+                <li><a href="#minusta">Minusta</a></li>
+                <li><a href="#projektit">Projektit</a></li>
+                <li><a href="#koulutus">Koulutus</a></li>
+                <li><a href="#tyokokemus">Työkokemus</a></li>
+                <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+            </ul>
         </nav>
     </header>
+
     <main>
-        <section class="intro">
-            <div class="intro-text">
-                <p>Moi, olen</p>
-                <p class="name">Sini Järveläinen</p>
+        <section id="koti">
+            <div class="tervehdysteksti">
+                <p>Moi! &#x1F44B; Olen</p>
+                <h2>Sini Järveläinen,</h2>
                 <p>matematiikan aineenopettajaopiskelija.</p>
-                <p>Mahtavaa, että löysit sivuilleni!
-                    Täällä voit tutustua työnäytteisiini.
-                </p>
-                <a href="portfolio.html">Portfolio</a>
+                <p>Mahtavaa, että löysin sivuilleni. Täällä voit tutustua minuun ja nähdä näytteitä töistäni. Ota rohkeasti yhteyttä mistä tahansa syystä – oli se sitten kysymys, yhteistyöidea tai ihan vain ajatusten vaihtaminen! &#x1F60A;</p>
             </div>
-            <img class="intro-picture" src="images/001.png" alt="Profilepicture">
+            <img src="images/001.png" alt="Kuva">
         </section>
+
+        <section id="minusta">
+            
+            <div class="esittely">
+                <img src="images/IMG_20250118_165334.jpg" alt="Kuva">
+                <div class="esittelyteksti">
+                    <h2>Minusta</h2>
+                    <p>Olen tuleva matematiikan ja tietojenkäsittelytieteen opettaja. Valmistuin luonnontieteiden kandidaatiksi keväällä 2024, ja nyt teen maisteriopintoja.</p>
+                    <p>Minua kiinnostaa erityisesti, miten matemaattiset ja ohjelmointiin liittyvät aiheet voidaan tehdä helposti ymmärrettäviksi ja kiinnostaviksi.</p>
+                    <p>Tavoitteenani on tehdä oppimisesta innostavaa — samalla itsekin jatkuvasti oppien.</p>
+                    <!-- Painikkeen takana lisää tekstiä -->
+                    <button id="lueLisaaPainike">Lue lisää: Mikä minua inspiroi ja vie eteenpäin?</button>
+                </div>
+            </div>
+            <!-- Taulukoituna lisää tietoa minusta -->
+            <div id="lisatiedot" class="piilossa">
+                <h4>Mikä minua inspiroi ja vie eteenpäin?</h4>
+                <div class="faktat">
+                    <div class="fakta">
+                        <div class="emoji">&#x1F9E9;</div>
+                        <h3> Ongelmanratkaisu</h3>
+                        <p>
+                            Rakastan uppoutua ongelmien ratkaisuun &#8212; se on sekä palkitsevaa että kehittävää. 
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F9E0;</div>
+                        <h3> Oivaltamisen ilo</h3>
+                        <p>
+                            Yksi palkitsevimmista asioista on nähdä, kun joku oivaltaa ja ymmärtää jotain uutta.
+                            Se inspiroi minua auttamaan ja etsimään keinoja tehdä oppimisesta innostavaa.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F4DA;</div>
+                        <h3> Oppimateriaalien tekeminen</h3>
+                        <p>
+                            Työstän parhaillaan YouTube-kanavaprojektiani,
+                            jossa tavoitteenani on tuottaa selkeitä, innostavia ja visuaalisesti houkuttelevia 
+                            matematiikan oppimateriaaleja nuorille heille tutulla alustalla.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F31F;</div>
+                        <h3>Uteliaisuus</h3>
+                        <p>
+                            Olen ylpeästi ikuinen oppija. Viime aikoina olen opiskellut videoiden tekemistä.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F49B;</div>
+                        <h3>Merkityksellinen tekeminen</h3>
+                        <p>
+                            Uskon, että jokainen voi löytää oman juttunsa. Minulle opettaminen on tapa tehdä työtä, jolla on oikeasti merkitystä.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F9D8;</div>
+                        <h3>Rauhallisuus ja pitkäjänteisyys</h3>
+                        <p>
+                            Nämä ovat vahvuuksiani, joita hyödynnän ongelmanratkaisussa, opettamisessa ja omassa oppimisessani.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F4AC;</div>
+                        <h3>Keskustelu ja vuorovaikutus</h3>
+                        <p>
+                            Vaikka on tärkeää, että on olemassa erilaisia opiskelumahdollisuuksia, mukaan lukien itseopiskelu, niin usein parhaat ideat ja oivallukset syntyvät keskustelemalla ja tekemällä yhdessä.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F91D;</div>
+                        <h3>Aitous</h3>
+                        <p>
+                            Opettajana haluan kohdata oppilaat yksilöinä ja näyttää heille, että olen oppimassa yhdessä heidän kanssaan.
+                        </p>
+                    </div>
+                    <div class="fakta">
+                        <div class="emoji">&#x1F3C3;</div>
+                        <h3>Luonto ja hyvinvointi</h3>
+                        <p>
+                            Vapaa-ajallani viihdyn luonnossa. Erityisesti polkujuoksu, bikepacking ja nuotioruokailu innostavat.
+                            Luonto antaa voimaa &#8212; se on minulle myös paikka löytää uusia ideoita ja palautua.
+                        </p>
+                    </div>
+        </section>
+
+        <section id="projektit">
+            <h2>Projektit</h2>
+            <div class="projektit-container">
+
+                <!-- Verkkosivut -->
+                <div class="projekti" data-modal="modal1">
+                    <div class="projekti-wrapper">
+                        <img src="images/Nimetön malli (5).png" alt="Verkkosivut">
+                        <div class="projekti-teksti">Responsiiviset verkkosivut</div>
+                    </div>
+                </div>
+                <!-- Verkkosivujen Pop up-ikkuna -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Responsiiviset verkkosivut</h3>
+                        <p>
+                            Tässä projektissa pääsin ideoimaan ja luomaan verkkosivut,
+                            jotka toimivat sujuvasti eri laitteilla.
+                            Jos luet tätä sivustoa tietokoneella, voit kokeilla muuttaa selainikkunasi kokoa ja katsoa, miten sivusto reagoi siihen.
+                            Sivusto on suunniteltu responsiiviseksi. Voit myös katsoa, miltä verkkosivuni näyttävät, kun käytät niitä mobiililaitteella.
+                        </p>
+                        <p>
+                            Tänä päivänä verkkosivuilla vieraillaan monenlaisilla laitteilla
+                            ja on tärkeää, että verkkosivut ovat saavutettavissa sekä puhelimen pienellä näytöllä että pöytäkoneen suurella näytöllä.
+                            Verkkosivujen ulkonäkö ja toiminnot muuttuvat sen mukaan,
+                            minkä kokoinen selain on käytössä.
+                        </p>
+                        <p>
+                            Toteutuksessa käytin HTML:ää ja CSS:ää ja työskentelin Linux-ympäristössä. 
+                        </p>
+                        <div class="tyokalut">
+                            <img src="images/htmllogo.png" alt="html">
+                            <img src="images/csslogo.webp" alt="css">
+                            <img src="images/linuxlogo.jpg" alt="linux">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube-video -->
+                <div class="projekti" data-modal="modal2">
+                    <div class="projekti-wrapper">
+                        <img src="images/Nimetön malli (4).png" alt="Opetusvideo">
+                        <div class="projekti-teksti">Matematiikan opetusvideo</div>
+                    </div>
+                </div>
+                <!-- Yt-videon Pop up-ikkuna -->
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Matematiikan opetusvideo</h3>
+                        <p>Videolla "Kolmion kulmien summa" käydään läpi geometrinen todistus sille, että kolmion kulmien summa on 180&deg;. 
+                            Video on suunnattu lukiolaisille ja yläkoululaisille, ja se on tehty lukion MAA3 Geometria -kurssille sopivaksi materiaaliksi.
+                            Videota voi käyttää opetustilanteessa tai itseopiskelussa.
+                        </p>
+                        <p>
+                            Videon on tarkoitus olla selkeä ja helposti ymmärrettävä.
+                            Selkeyttä luovat kuvat, värien käyttö ja yhtäaikainen puhuttu selitys.
+                            Videon on tarkoitus olla nuorelle mielekästä katsottavaa, ja siksi se on lyhyt ja värityksessä on haettu moderniutta ja tyylikkyyttä.
+                            Videoon on saatavilla tekstitys, mikä tuo saavutettavuutta.
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=JKaBvAooNbo" target="_blank">Katso video YouTubessa</a>
+                        <div class="kuvaboksi">
+                            <img src="images/kansikuva.png" alt="YouTube-videon kansikuva">
+                            <img src="images/ytvideonkuva1.png" alt="YouTube-videon kuva">
+                        </div>
+                        <p>
+                            Tämä projekti on ollut erittäin antoisa, ja
+                            opetusvideoiden tekeminen on minulle mielekästä.
+                            Aloittelenkin juuri YouTube-kanavaprojektini, jonka
+                            parissa työskentelen toivottavasti tänä vuonna enemmänkin.
+                            Tarkoituksenani on tarjota nuorille matematiikkasisältöinen kanava, josta löytyy selkeitä ja tyylikkäitä
+                            opetusvideoita ilmaiseksi. Alustana YouTube tavoittaa yläkoululaiset ja lukiolaiset.                
+                            Ihmisten keskittymiskyky on yleisesti heikentynyt, ja voin olla edistämässä nuorten oppimista 
+                            tekemällä videoista tarpeeksi lyhyitä, selkeitä ja visuaalisesti kiinnostavia.
+                            Tässä esitelty video on tuosta projektista ensimmäisen videon ensimmäinen versio.
+                        </p>
+                        <p>Projektissa käytin Xournal++ -ohjelmaa matematiikan piirtämiseen ja selittämiseen 
+                            sekä CapCutia videoiden editointiin.</p>
+                        <div class="tyokalut">
+                            <img src="images/Xournal++_logo.svg.png" alt="xournal">
+                            <img src="images/capcut-logo.png" alt="capcut">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TikTok/YouTube Short -->
+                <div class="projekti" data-modal="modal3">
+                    <div class="projekti-wrapper">
+                        <img src="images/lyhytvideonkuva1.png" alt="Lyhytvideo">
+                        <div class="projekti-teksti">Lyhytvideo</div>
+                    </div>
+                </div>
+                <!-- shortin Pop up-ikkuna -->
+                <div id="modal3" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Lyhytvideo</h3>
+                        <p>
+                            Tämän julkaisun idea on tavoittaa nuoria ja herättää kiinnostusta matematiikkaan.
+                            Samalla näinkin lyhyellä videolla on myös opetuksellista arvoa, kun siinä käydään läpi yhtälönratkaisua.
+                            Video on lyhyt ja nopeatempoinen, koska tarkoituksena on saada nuori katsomaan video kokonaan.
+                            Video on tekstitetty, ja siksi sen voi katsoa kokonaan myös äänittä.
+                            Lyhytvideoiden avulla matematiikka voi tavoittaa nuoria arjessa.
+                            Videon voi julkaista YouTube short -videona tai TikTokissa.
+                        </p>
+                        <a href="https://youtube.com/shorts/y9dMqddlmDA" target="_blank">Katso video YouTubessa</a>
+                        <img class="kuva1" src="images/lyhytvideonkuva1.png" alt="Kuva lyhytvideosta">
+                        <p>
+                            Matematiikan kirjoittaminen on tehty ohjelmalla Xournal++ 
+                            ja video on editoitu CapCutilla.
+                        </p>
+                        <div class="tyokalut">
+                            <img src="images/Xournal++_logo.svg.png" alt="xournal">
+                            <img src="images/capcut-logo.png" alt="capcut">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GeoGebra-appletti -->
+                <div class="projekti" data-modal="modal4">
+                    <div class="projekti-wrapper">
+                        <img src="images/geogebra.png" alt="Geogebra-appletti">
+                        <div class="projekti-teksti">Geogebra-appletti</div>
+                    </div>
+                </div>
+                <!-- GeoGebran Pop up-ikkuna -->
+                <div id="modal4" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Geogebra-appletti</h3>
+                        <p>Interaktiivinen matematiikan työkalu, jonka avulla voidaan visualisoida laskuja.</p>
+                        <p>Toteutin GeoGebralla interaktiivisen mallin,
+                            joka havainnollistaa kolmion kulmien summaa.
+                            Käyttäjä voi itse muuttaa kolmion muotoa ja
+                            nähdä samanaikaisesti muutoksen seuraukset.
+                            Appletti tukee aktiivista tutkimista ja oppimista.
+                            Appletti on julkaistu GeoGebrassa ja sen voi löytää kohdasta "Materiaalit" hakusanoilla "kolmion kulmien summa" tai "sini järveläinen".
+                            Pääset applettiin myös suoraan oheisesta linkistä.
+                        </p>
+                        <a href="https://www.geogebra.org/m/ztksjdnr" target="_blank">Siirry applettiin GeoGebrassa</a>
+                        <img class="kuva2" src="images/geogebra.png" alt="GeoGebra-appletti">
+                        <p>
+                            Tämä projekti on tehty kokonaan GeoGebralla.
+                        </p>
+                        <div class="tyokalut">
+                            <img class="icon" src="images/Geogebra.svg.png" alt="geogebra">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kandidaatintutkielma -->
+                <div class="projekti" data-modal="modal5">
+                    <div class="projekti-wrapper">
+                        <img src="images/Nimetön malli (5).png" alt="Tutkielma">
+                        <div class="projekti-teksti">Kirjallisuuskatsaus konvekseihin funktioihin</div>
+                    </div>
+                </div>
+                <!-- tutkielman Pop up-ikkuna -->
+                <div id="modal5" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Kandidaatin tutkielma: Kirjallisuuskatsaus konvekseihin funktioihin</h3>
+                        <p>
+                            Kirjoitin kandidaatintutkielmani konvekseista funktioista.
+                            Tutkielma on kirjoitettu siten, että se voi toimia oppimateriaalina yliopisto-opiskelijalle.
+                            Kirjoitin kandidaatintyöni keväällä 2024, ja se sai arvostelussa arvosanan 5 asteikolla 1&#8212;5.
+                            Oheinen linkki avaa tutkielman pdf-tiedostona uuteen välilehteen.
+                        </p>
+                        <a href="assets/tutkielma.pdf" target="_blank">Avaa PDF-tiedosto</a>
+                        <img class="kuva3" src="images/sspdf.png" alt="Tutkielma">
+                        <p>
+                            Tämä työ on laadittu LaTeX-ladontajärjestelmällä.
+                        </p>
+                        <div class="tyokalut">
+                            <img src="images/LaTeX_logo.svg.png" alt="latex">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="koulutus">
+            <h2>Koulutus</h2>
+            <div class="degree">
+                <p class="year">2024 &#8212 </p>
+                <div class="details">
+                    <p class="tutkinto">Filosofian maisteri | Matematiikan, fysiikan ja kemian opettajan maisteriohjelma, opintosuuntana matematiikka</p>
+                    <p class="laitos">Helsingin yliopisto</p>
+                    <p>Opiskelen matematiikan aineenopettajaksi.
+                        Toinen opetettava aineeni on tietojenkäsittelytiede. 
+                        Maisteriopinnoissa matematiikan rinnalle ovat tulleet pedagogiset opinnot, 
+                        jotka ovat avanneet syvällisempää näkemystä oppimisprosessiin. 
+                        Vaikka aineenhallinta on keskeistä aineenopettajan työssä, niin 
+                        pedagogiset taidot ovat välttämättömiä, jotta oppilaat voivat todella ymmärtää ja omaksua opetetut asiat.
+                    </p>
+                </div>
+            </div>
+            <div class="degree">
+                <p class="year">2019 &#8212 2024</p>
+                <div class="details">
+                    <p class="tutkinto">Luonnontieteiden kandidaatti | Matematiikan, fysiikan ja kemian opettajan kandiohjelma, opintosuuntana matematiikka</p>
+                    <p class="laitos">Helsingin yliopisto</p>
+                    <p>
+                        Aloitin yliopisto-opintoni tietojenkäsittelytieteen kandiohjelmassa, 
+                        mutta matematiikka vei mukanaan ja vaihdoin opettajalinjalle, jossa
+                        voin yhdistää aineet.
+                        Minua kiinnostaa myös, kuinka ohjelmointitaitoja voi hyödyntää matematiikassa.
+                        Tällä hetkellä lukion ohjelmoinnin opetus on myös OPS:ssa 
+                        sisällytetty matematiikkaan.
+                    </p>
+                </div>
+            </div>
+            <!-- Painikkeen takana vanhemmat koulutukset -->
+            <button id="lueLisaaKoulutuksesta">Näytä lisää</button>
+        
+            <div class="lisaKoulu piilossa">
+                <p class="year">2013 &#8212 2016</p>
+                <div class="details">
+                    <p class="tutkinto">Merkonomi | Talous- ja toimistopalvelut</p>
+                    <p class="laitos">Suomen Liikemiesten Kauppaopisto</p>
+                    <p>
+                        Koulutus antoi käytännön liiketoiminta- ja taloustaitoja, 
+                        ja kiinnostukseni matematiikkaan ja numeroiden kanssa täsmälliseen työskentelyyn 
+                        oli vahvaa jo tuolloin.
+                    </p>
+                </div>
+            </div>
+            <div class="lisaKoulu piilossa">
+                <p class="year">2008 &#8212 2011</p>
+                <div class="details">
+                    <p class="tutkinto">Ylioppilas</p>
+                    <p class="laitos">Joroisten lukio</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tyokokemus">
+            <h2>Työkokemus</h2>
+            <div class="degree">
+                <p class="year">05/2014 &#8212 09/2024</p>
+                <div class="details">
+                    <p class="tutkinto">Pikaruokamyyjä</p>
+                    <p class="laitos">Lone Star Oy</p>
+                    <p>
+                        Työskentelin 10 vuoden ajan, pääasiassa opintojeni ohella ja loma-aikoina, tiiviissä tiimissä kiireisellä drive in -kioskilla. 
+                        Työ vaati tehokasta toimintaa, hyvää paineensietokykyä, joustavuutta ja saumatonta yhteistyötä työkaverin kanssa. 
+                        Kiireisessä ympäristössä oli tärkeää pysyä sinnikkäänä ja järjestelmällisenä. Työ tehtiin ripeästi mutta huolellisesti. 
+                        Asiakaspalvelussa kohtasin monenlaisia ihmisiä ja opin arvostamaan ystävällistä ja selkeää viestintää sekä joustavaa asennetta. 
+                        Työn tekeminen hyvällä energialla ja positiivisella asenteella oli osa arkea.
+                    </p>
+                </div>
+            </div>
+            <div class="degree">
+                <p class="year">01 &#8212 06/2016</p>
+                <div class="details">
+                    <p class="tutkinto">Talousassistentti, työssäoppiminen</p>
+                    <p class="laitos">Conwe Oy / matkavaruste.fi</p>
+                    <p>Hoidin myynti- ja ostotilauksia sekä -laskuja, lisäsin ja hinnoittelin tuotteita verkkokauppa-alustalle 
+                        sekä ohjeistin muita harjoittelijoita. Harjoittelu kehitti organisointi- ja yhteistyötaitojani 
+                        sekä antoi kokemusta verkkokaupan ylläpidosta.</p>
+                </div>
+            </div>
+            <!-- Painikkeen takana vanhemmat koulutukset -->
+            <button id="lueLisaaTyokokemuksesta">Näytä lisää</button>
+
+            <div class="lisatyo piilossa">
+                <p class="year">04 &#8212 05/2014</p>
+                <div class="details">
+                    <p class="tutkinto">Taloushallinnon avustavat tehtävät, työssäoppiminen</p>
+                    <p class="laitos">Vantaan Nicehearts ry</p>
+                </div>
+            </div>
+            <div class="lisatyo piilossa">
+                <p class="year">06 &#8212 08/2013 ja <br> 06 &#8212 08/2012</p>
+                <div class="details">
+                    <p class="tutkinto">Vierasvenesataman hoitaja, kausityö</p>
+                    <p class="laitos">SMPS, Varkauden Järvipelastajat ry</p>
+                </div>
+            </div>
+            <div class="lisatyo piilossa">
+                <p class="year">09/2012 &#8212 05/2013</p>
+                <div class="details">
+                    <p class="tutkinto">Pikaruokamyyjä</p>
+                    <p class="laitos">Kauppasuma Oy</p>
+                </div>
+            </div>
+            <div class="lisatyo piilossa">
+                <p class="year">06 &#8212 08/2011</p>
+                <div class="details">
+                    <p class="tutkinto">Museo-opas ja viheralueiden hoitaja, kausityö</p>
+                    <p class="laitos">Joroisten 4H-yhdistys ry</p>
+                </div>
+            </div>
+            <h2>Muu kokemus</h2>
+            <div class="degree">
+                <p class="year">2019 &#8212 nykyhetki</p>
+                <div class="details">
+                    <p class="tutkinto">Tutorointi</p>
+                    <p class="laitos">Lähipiiri</p>
+                    <p>
+                        Olen auttanut ystäviä ja tuttuja saavuttamaan opiskelutavoitteitaan, lähinnä matematiikassa, tarjoamalla yksilöllistä ohjausta.
+                        Kokemus on kehittänyt viestintätaitojani, kykyäni tehdä monimutkaisista asioista ymmärrettäviä sekä opettamiseen liittyvää osaamistani.
+                        Esimerkiksi olen auttanut erästä valmistautumaan pääsykokeiden tilastotieteen osioon
+                        ja toisen kanssa olemme harjoitelleet lääkelaskuja.
+                        Olen saanut positiivista palautetta opetuksesta ja kiitosta kärsivällisyydestäni.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="yhteystiedot">
+            <h2>Yhteystiedot</h2>
+            <!-- Sähköposti -->
+            <a href="mailto:sini.jarvelainen@gmail.com" aria-label="Lähetä sähköpostia">
+            <i class="fa-solid fa-envelope"></i>
+            </a>
+            <span>sini.jarvelainen@gmail.com</span>
+
+            <br>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/ssihni" target="_blank" rel="noopener noreferrer" aria-label="Avaa Instagram">
+            <i class="fa-brands fa-instagram"></i>
+            </a>
+            <span>ssihni</span>
     </main>
 </body>
 </html>

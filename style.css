@@ -1,0 +1,490 @@
+/* Gooogle font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: Poppins, sans-serif; /* jälkimmäinen on varafontti, jos ensimmäisen haku epäonnistuu*/
+    font-size: 1.2rem; /* Fonttikoko suhteessa oletusfonttiin eli hieman suurempi */
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: clamp(2rem, 6vw, 5rem); /* Koko skaalautuu näytän mukaan, min ja max määritelty */
+    font-weight: 100;
+}
+
+/* header eli ylätunniste */
+header {
+    padding: 1rem;
+    text-align: end;
+    /* Asetetaan niin, että liikkuu sivun mukana*/
+    position: fixed; /* kiinnittää paikalleen huolimatta sivuston muusta liikeestä*/
+    width: 100%; /* täyttää näytön lebeyden*/
+    z-index: 1000; /* pitää elementin muiden päällä*/
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* "lasi"efekti */
+}
+
+/* navigaatiopalkki */
+nav {
+    display: flex;
+    justify-content: space-between; /* väli kotilinkin ja muiden linkkien välille*/
+    align-items: center; /* keskittää sisällön eli tekstin*/
+    padding-right: 10%; /* tilaa ympärille */
+    padding-left: 1rem;
+}
+
+.kotilinkki a {
+    color: rgb(238, 233, 233);
+    text-decoration: none;
+    font-size: 1.4rem; /* mökin koko */
+}
+
+nav ul {
+    list-style: none; /* poistaa listamerkit */
+    padding: 0;
+    margin: 0;
+    display: flex; /* asettaa linkit riviin */
+    justify-content: center; /* keskittää linkit */
+    gap: 1.5rem; /* väli linkkien välillä */
+}
+
+/* navigointipalkin linkki */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem; /* lisää klikkausalueen; tilaa alle ja sivuilla */
+}
+
+/* mitä tapahtuu, kun kursori viedään päälle */
+nav ul li a:hover {
+    color: lightblue;
+}
+
+/* hampurilaisvalikko mobiilille */
+.hampurilaiskuvake {
+    display: none; /* piilotetaan oletuksena */
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+/* Sectioneiden yleiset asetukset */
+section {
+    padding-top: 2rem; /* Sisältö ei jää headerin alle*/
+    min-height: 50vh;
+    overflow: hidden;
+    padding-right: 10vw; /* tyhjää tilaa sivuille*/
+    padding-left: 10vw;
+}
+
+/* Koti-osio */
+#koti { 
+    background-color: rgb(27, 25, 25);
+    display: flex;
+    align-items: center; /* Keskittää pituussuunnassa*/
+    justify-content: center; /*Keskittää leveyssuunnassa*/
+}
+
+.tervehdysteksti {
+    position: absolute; /* Sallitaan tekstin meneminen kuvan päälle */
+    padding-left: 15%;
+    padding-right: 35%;
+    color: rgb(238, 232, 215);
+    text-align: left;
+}
+
+.tervehdysteksti h2 {
+    margin: -1rem 0;
+    color: rgb(255, 247, 131);
+}
+
+#koti img {
+    padding-left: 50%;
+    height: clamp(30rem, 90vh, 50rem);
+    width: auto;
+}
+
+/* Minusta-osio */
+#minusta { 
+    background-color: rgb(172, 171, 171);
+    display: flex;
+    flex-direction: column; /* rivittää esittelyn ja lisätiedot*/
+    align-items: center;
+    padding-bottom: 6rem;
+}
+
+/* kuva ja lyhyt esittelyteksti */
+.esittely {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Tilaa elementtien välille*/
+    width: 90%; /* ei vie koko näyttöä */
+}
+.esittelyteksti {
+    text-align: left;
+}
+#minusta img {
+    width: clamp(10rem, 30vw, 25rem);
+    height: auto;
+    border-radius: 15rem; /* Pyöristetyt reunat */
+    margin-top: 5rem;
+}
+
+#lueLisaaPainike {
+    /* background: linear-gradient(135deg, #30a09a, #00fff2d8); Tyylikäs liukuväri */
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: none;
+    border-style: none;
+    text-decoration: underline;
+    transition: all 0.5s;
+    color: rgb(148, 110, 52);
+}
+/* Hover-efekti */
+#lueLisaaPainike:hover {
+    color: black;
+/*    transform: scale(1.05); Pieni suurennus */
+/*   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3); Varjostus */
+}
+
+/* Kun piilossa-luokka on päällä, lisätiedot eivät näy */
+.piilossa {
+    display: none;
+}
+
+/* Lisää esittelyä*/
+#lisatiedot {
+    padding: 2rem 0;
+}
+#lisatiedot h4 {    /* otsikko */
+    font-weight: 100;
+    font-size: 2rem;
+}
+.faktat {
+    display: flex;
+    flex-wrap: wrap; /* Responsiivisuus: sallitaan rivittyminen*/
+    justify-content: center;
+}
+.fakta {
+    min-width: 20rem;
+    max-width: 25%; /* estetään liian monen pääsy samalle riville*/
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.emoji {
+    font-size: 2.5rem;
+}
+.fakta h3 {
+    font-weight: 200;
+    margin: 0;
+}
+
+/* PROJEKTIT-OSIO */
+#projektit { 
+    background-color: rgb(247, 184, 89);
+    text-align: center;
+    padding: 3rem 2rem 10rem 2rem;
+}
+/* Flexbox-asettelu */
+.projektit-container {
+    display: flex;
+    flex-wrap: wrap; /* Rivinvaihto sallittu */
+    gap: 1rem; /* Väli elementtien välille */
+    justify-content: center;
+    align-items: flex-start; /* Kuvien yläreunat linjataan */
+}
+/* Yksittäinen projekti */
+.projekti {
+    position: relative;
+    overflow: hidden; /* Leikataan ylimenevä osa pois */
+}
+
+/* Kuvan wrapper, jonka avulla saadaan hover-efekti kohdistettua */
+.projekti-wrapper {
+    position: relative;
+    width: 100%;
+    height: 25rem; /* Pakotetaan kaikki kuvat saman kokoisiksi */
+}
+
+/* Kuvan tyyli */
+.projekti-wrapper img {
+    height: 100%;
+    max-width: 20rem;
+    object-fit: cover; /* Leikkaa ylimenevän osan pois */
+    display: block;
+    border-radius: 1rem;
+}
+
+/* Teksti, joka ilmestyy hoverilla */
+.projekti-teksti {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    opacity: 0; /* Aluksi tätä ei näy */
+    transition: opacity 0.6s ease-in-out;
+    border-radius: 1rem;
+}
+
+/* Hover-efekti: Näytä teksti */
+.projekti-wrapper:hover .projekti-teksti {
+    opacity: 1;
+}
+
+/* Modal eli popup-ikkuna projekteille */
+/* Modalin tausta */
+.modal {
+    display: none; /* Aluksi piilotetty */
+    position: fixed; /* Pysyy paikallaan vaikka sivustoa vierittäisi */
+    z-index: 1; /* Tulee muun sivun päälle */
+    padding-top: 6rem; /* Ikkunan sijainti */
+    left: 0; /* Alkaa vasemmalta */
+    top: 0; /* Alkaa yläreunasta */
+    /* Täyttää koko näytön, jotta esim. saadaan koko tausta eli alle jäänyt sivusto tummaksi */
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Sallitaan scrollaus */
+    background-color: rgba(0,0,0,0.4); /* Tummennetaan taustalle jäänyt sivu */
+}
+
+/* Modalin sisältö */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* keskelle näyttöä */
+    margin-bottom: 10rem; /* Alas tilaa*/
+    border: 1px solid #888;
+    border-radius: 2rem; /*Pyöristetyt reunat*/
+    width: 80%; /* Vie saatavilla olevasta tilasta*/
+    display: flex; /* Rivittää elementit nätisti keskelle*/
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem 6rem 2rem;
+}
+
+.modal-content h3 {
+    font-weight: 200;
+    font-size: 2rem;
+}
+
+.modal-content p {
+    max-width: 80%;
+}
+
+.modal-content a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 0, 0, 0.815);
+    border-radius: 20rem;
+    padding: 1.5rem;
+    transition: color 0.5s;
+    margin: 1rem auto 2rem auto; /* tilee panikkeen ympärille*/
+}
+    
+/* Hover-efekti linkeille */
+.modal-content a:hover {
+        color: rgba(0, 0, 0, 0.897);
+    }
+
+.tyokalut {
+    display: flex;
+}
+.tyokalut img {
+    height: 3rem;
+    padding: 0.2rem;
+}
+  
+/* Sulje-painike */
+.close {
+    color: #aaaaaa;
+    font-size: 2rem;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Kaksi kuvaa rinnakkain */
+.kuvaboksi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Sallitaan rivitys */
+}
+
+.kuvaboksi img {
+    border-radius: 0.7rem;
+    width: clamp(20rem, 50%, 40rem);
+}
+
+/* Yksittäiset kuvat */
+.kuva1 {
+    width: clamp(10rem, 50%, 25rem);
+}
+.kuva2 {
+    width: clamp(20rem, 70%, 50rem);
+}
+.kuva3 {
+    width: clamp(20rem, 90%, 100rem);
+}
+
+#koulutus { 
+    background-color: #9affcd;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 6rem;
+    padding-top: 3rem;
+}
+
+.degree {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+}
+.year {
+    padding-top: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+}
+.tutkinto {
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+.laitos {
+    font-weight: 500;
+}
+
+/* Lue lisää koulutuksesta -painike*/
+#lueLisaaKoulutuksesta, #lueLisaaTyokokemuksesta {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    color: grey;
+    transition: color 0.5s;
+}
+#lueLisaaKoulutuksesta:hover, #lueLisaaTyokokemuksesta:hover {
+    color: black;
+}
+
+#tyokokemus { 
+    background-color: #9deffa;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 6rem;
+    padding-top: 3rem;
+}
+#yhteystiedot { background-color: #b88e67; color: white; }
+
+#yhteystiedot a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+#yhteystiedot i {
+    font-size: 1.5rem; /* Isommat ikonit */
+    transition: color 0.3s;
+}
+
+#yhteystiedot a:hover i {
+    color: darkblue; /* Vaihtaa väriä hoverilla */
+}
+
+/* mobiilinäkymä */
+@media screen and (max-width: 768px) {
+    /* Navigaatiovalikko */
+    .hampurilaiskuvake {
+        display: block; /* näytetään kuvake */
+    }
+
+    nav ul {
+        display: none; /* Piilotetaan lista aluksi */
+        flex-direction: column;
+        text-align: center;
+        position: absolute;
+        width: 50%;
+        right: 0; /* Valikko tulee oikeaan reunaan*/
+        top: 4.45rem; /* Annetaan tilaa headerille*/
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px); /* "lasi"efekti */
+    }
+
+    nav ul.show {
+        display: flex; /* Näytetään lista, kun "show"-luokka lisätään js:ssa */
+    }
+
+    /* Koti-osio*/
+    #koti {
+        align-items: end;
+    }
+    
+    .tervehdysteksti {
+        padding: 4rem 2rem;
+    }
+
+    /* MINUSTA-OSIO */
+    #minusta {
+        padding: 1rem; /* tuodaan tekstiä enemmän reunoille */
+    }
+    .esittely {
+        flex-direction: column; /* responsiivisuus: kuva hyppää tekstin päälle */
+        width: 100%;
+    }
+
+    .esittelyteksti h2 {
+        margin: 0;
+    }
+    #lueLisaaPainike {
+        margin: 0rem 3rem;
+    }
+
+    /* PROJEKTIT-OSIO */
+    .projekti-teksti {
+        opacity: 1; /* Teksti näkyy aina */
+        background: rgba(0, 0, 0, 0.7);
+        height: 20%;
+        bottom: 40%;
+        width: 90%;
+        left: 1rem;
+        font-size: 1.2rem;
+        border-radius: 2rem;
+    }
+
+    /* KOULUTUS JA KOKEMUS -OSIOT */
+    .degree {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .year {
+        padding: 0;
+    }
+
+}
+
+/** linkkien klikkaaminen vierittää sivua pehmeästi **/
+html {
+    scroll-behavior: smooth;
+}
