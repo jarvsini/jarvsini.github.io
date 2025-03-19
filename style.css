@@ -5,13 +5,12 @@ body {
     font-family: Poppins, sans-serif; /* jälkimmäinen on varafontti, jos ensimmäisen haku epäonnistuu*/
     font-size: 1.2rem; /* Fonttikoko suhteessa oletusfonttiin eli hieman suurempi */
     text-align: center;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 h2 {
-    font-size: clamp(2rem, 6vw, 5rem); /* Koko skaalautuu näytän mukaan, min ja max määritelty */
+    font-size: clamp(2rem, 5vw, 4.2rem); /* Koko skaalautuu näytän mukaan, min ja max määritelty */
     font-weight: 100;
 }
 
@@ -40,6 +39,9 @@ nav {
     color: rgb(238, 233, 233);
     text-decoration: none;
     font-size: 1.4rem; /* mökin koko */
+}
+.kotilinkki :hover {
+    color: lightblue;
 }
 
 nav ul {
@@ -84,7 +86,7 @@ section {
 
 /* Koti-osio */
 #koti { 
-    background-color: rgb(27, 25, 25);
+    background-color: rgb(27, 26, 25);
     display: flex;
     align-items: center; /* Keskittää pituussuunnassa*/
     justify-content: center; /*Keskittää leveyssuunnassa*/
@@ -100,7 +102,20 @@ section {
 
 .tervehdysteksti h2 {
     margin: -1rem 0;
-    color: rgb(255, 247, 131);
+    color: rgb(247, 193, 113);
+    font-weight: 900;
+}
+#otayhteytta {
+    text-decoration: none;
+    color: rgb(247, 239, 230);
+    background-color: #5f5d5d;
+    padding: 0.5rem 1rem;
+    border-radius: 20rem;
+    transition: all 0.5s;
+}
+#otayhteytta:hover {
+    background-color: rgb(216, 197, 169);
+    color: #222121;
 }
 
 #koti img {
@@ -344,7 +359,7 @@ section {
 }
 
 #koulutus { 
-    background-color: #9affcd;
+    background-color: #ffb8e4;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -378,7 +393,7 @@ section {
     border: none;
     text-decoration: underline;
     cursor: pointer;
-    color: grey;
+    color: rgb(134, 82, 29);
     transition: color 0.5s;
 }
 #lueLisaaKoulutuksesta:hover, #lueLisaaTyokokemuksesta:hover {
@@ -386,7 +401,8 @@ section {
 }
 
 #tyokokemus { 
-    background-color: #9deffa;
+    background-color: #cca07b;
+    color: rgb(0, 0, 0);
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -394,10 +410,12 @@ section {
     padding-bottom: 6rem;
     padding-top: 3rem;
 }
-#yhteystiedot { background-color: #b88e67; color: white; }
+#yhteystiedot { 
+    background-color: #afd2ff;
+}
 
 #yhteystiedot a {
-    color: rgb(255, 255, 255);
+    color: rgb(59, 58, 58);
     text-decoration: none;
     font-size: 1.2rem;
     margin-right: 0.5rem;
@@ -409,7 +427,13 @@ section {
 }
 
 #yhteystiedot a:hover i {
-    color: darkblue; /* Vaihtaa väriä hoverilla */
+    color: rgb(255, 240, 221); /* Vaihtaa väriä hoverilla */
+}
+
+footer {
+    background-color: #afd2ff;
+    border-top-style: inset;
+    font-size: 1rem;
 }
 
 /* mobiilinäkymä */
