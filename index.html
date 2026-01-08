@@ -1,133 +1,484 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sini Järveläinen</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Tavallinen favicon kaikille selaimille -->
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <!-- Korkearesoluutioiset vaihtoehdot -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <!-- Ylärivi -->
-        <div class="ylapalkki">
-            <div class="kotilinkki">
-            <a href="#koti"><img src="assets/favicon-32x32.png" alt="Koti"></a>
-            </div>
-            <div class="somelinkit">
-            <a href="https://youtube.com/@matikkatube" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://instagram.com/ssihni" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/jarvsini" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
+
+  <!-- YLÄPALKKI -->
+  <header>
+    <nav class="navbar">
+
+      <!-- Hampurilaisvalikko mobiilinäkymään -->
+      <div class="menu-icon" id="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <div class="nav-menu" id="nav-menu">
+        
+        <!-- Logo, joka vie etusivulle -->
+        <div class="nav-logo">
+          <a href="#home">
+            <span class="logo-teksti">
+              <img src="images/favicon-32x32.png" alt="" style="border-radius: 50%; vertical-align: middle;">
+              <strong>Sini</strong><br> Järveläinen
+            </span>
+            <!-- Mobiiliin vain teksti ETUSIVU -->
+            <span class="mobiili-koti">ETUSIVU</span>
+          </a>
+        </div>
+        
+        <!-- Varsinainen valikko, linkit sivun osioihin -->
+        <ul class="nav-links">
+          <li><a href="#about">MINUSTA</a></li>
+          <li><a href="#portfolio">PORTFOLIO</a></li>
+          <li><a href="#contact">YHTEYSTIEDOT</a></li>
+        </ul>
+
+      </div>
+
+      <!-- Linkki YouTubeen -->
+      <div class="nav-yt">
+          <a href="https://www.youtube.com/@matikkatube" target="_blank" class="yt-button">
+            <i class="fa-brands fa-youtube yt-icon"></i>
+            <span class="yt-teksti">MatikkaTube</span>
+          </a>
         </div>
 
-        <!-- Hampurilaisvalikko -->
-        <div class="valikkopalkki">
-            <div class="hampurilaiskuvake" onclick="avaaSuljeValikko()">
-            <i class="fa-solid fa-bars"></i>
+    </nav>
+  </header>
+
+  <!-- SIVUN PÄÄSISÄLTÖ -->
+  <main>
+
+    <!-- ETUSIVU -->
+    <section id="home">
+      <div class="home-section-container">
+        
+        <p class="osion-otsikko">> Tervetuloa</p>
+
+        <div class="sisalto">
+          
+          <div class="tekstilaatikko">
+            <h1>Moi! 👋 Olen Sini</h1>
+            <p class="kuvausteksti">
+              Matematiikan ja tietotekniikan aineenopettajaopiskelija
+            </p>
+            <p class="lisateksti">Kiva, kun löysit tänne!</p>
+        
+            <div class="home-buttons">
+              <a href="#portfolio" class="portfolio-btn btn">Tutustu töihini</a>
+              <a href="#contact" class="contact-btn btn">Ota yhteyttä</a>
             </div>
-            <nav>
-            <ul id="navilista">
-                <li><a href="#projektit">portfolio</a></li>
-                <li><a href="#yhteystiedot">yhteystiedot</a></li>
-            </ul>
-            </nav>
-        </div>    
-    </header>
+          </div>
 
-    <main>
-        <section id="koti-section">
-            <div id="koti">
-                <img src="images/SINI.png" alt="Kuva">
-                <div class="etusivunapit">
-                    <a href="#projektit">portfolio</a>
-                    <a href="#yhteystiedot">yhteystiedot</a>
-                </div>
+          <div class="profiilikuva">
+            <img src="images/kuva001.jpg" alt="Sini Järveläinen">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MINUSTA-OSIO -->
+    <section id="about">
+      <div class="section-container">
+        <p class="osion-otsikko">> MINUSTA</p>
+
+        <!-- Esittelyteksti -->
+        <div class="about-grid">
+          <div class="about-teksti">
+            <p>Opiskelen matematiikan ja tietotekniikan aineenopettajaksi.
+              Olen valmistunut kandiksi 2024, ja tällä hetkellä teen maisteriopintoja.</p>
+            
+            <p>Olen rauhallinen ja pitkäjänteinen ongelmanratkaisija, joka innostuu työstään ja iloitsee muiden oivalluksista.
+              <span class="korostus-oranssi">Rauhallisuus ja lempeys ovat supervoimiani.</span>
+              Opettamisen lisäksi minua innostaa oppimateriaalien ideointi ja tuottaminen, mitä toteutankin YouTube-kanavallani matematiikan opetusvideoita tehden.</p>
+            
+            <p>Ongelmanratkaisussa hyödynnän uteliaisuuttani ja pitkäjänteisyyttäni.
+              Uteliaisuus ohjaa minua myös opiskelussa ja oppimisessa.</p>
+            
+            <p>Vapaa-ajallani viihdyn luonnossa juosten, pyöräillen ja metsäretkeillen.
+              Jos en ole ulkoilemassa, luultavasti teen japanilaisia ristikoita tai miniatyyriaskartelen Fimo-massasta.</p>
+          </div>
+
+          <!-- Koulutus -->
+          <div class="koulutus-laatikko">
+            <h3>Koulutus</h3>
+            <div class="koulutus-rivi">
+              <span class="vuosi">2026</span>
+              <div class="tutkinto">
+                <strong>Filosofian maisteri (kesken)</strong><br>
+                Helsingin yliopisto<br>
+                <small>Ma, fy ja ke aineenopettajan maisteriohjelma</small>
+              </div>
             </div>
-        </section>
-
-        <!-- PORTFOLIO -->
-        <section id="projektit">
-            <h2>PORTFOLIO</h2>
-            <div class="projektit-grid">
-
-                <!-- 1. Opetusvideot -->
-                <div class="projekti">
-                <img src="images/pikkukuva_prosenttilaskut1.png" alt="Matematiikan opetusvideo">
-                <h3>Matematiikan opetusvideot</h3>
-                <p>Selkeitä, visuaalisesti kiinnostavia videoita lukiolaisille.</p>
-                <a href="https://www.youtube.com/@matikkatube" target="_blank">Katso YouTube-kanava</a>
-                </div>
-
-                <!-- 2. Matematiikkapeli -->
-                <div class="projekti">
-                <img src="images/matikkapeli.png" alt="Matematiikkapeli">
-                <h3>Matematiikkapeli</h3>
-                <p>Interaktiivinen peli, joka harjoittaa päässälaskutaitoja. Suunnattu alakoululaisille.</p>
-                <a href="https://github.com/jarvsini/matematiikkapeli" target="_blank">Katso GitHubissa</a>
-                </div>
-
-                <!-- 3. Verkkosivut -->
-                <div class="projekti">
-                <img src="images/nettisivut.png" alt="Verkkosivut">
-                <h3>Responsiiviset verkkosivut</h3>
-                <p>HTML- ja CSS-toteutus, joka skaalautuu eri näyttöihin. Tämä portfolio on tämä projekti!</p>
-                </div>
-
-                <!-- 4. GeoGebra-appletti -->
-                <div class="projekti">
-                <img src="images/geogebra.png" alt="GeoGebra-appletti">
-                <h3>GeoGebra-appletti</h3>
-                <p>Interaktiivinen työkalu kolmion kulmien summan havainnollistamiseen. Käyttäjä voi muokata kolmiota.</p>
-                <a href="https://www.geogebra.org/m/ztksjdnr" target="_blank">Avaa GeoGebrassa</a>
-                </div>
-
-                <!-- 5. Kandidaatintutkielma -->
-                <div class="projekti">
-                <img src="images/sspdf.png" alt="Kandidaatintutkielma">
-                <h3>Kirjallisuuskatsaus: Konveksit funktiot</h3>
-                <p>Kandidaatintutkielma konvekseista funktioista. Kirjoitettu selkeästi siten, että voisi toimia oppimateriaalina yliopisto-opiskelijoille.</p>
-                <a href="assets/tutkielma.pdf" target="_blank">Avaa PDF</a>
-                </div>
+            <div class="koulutus-rivi">
+              <span class="vuosi">2024</span>
+              <div class="tutkinto">
+                <strong>Luonnontieteiden kandidaatti</strong><br>
+                Helsingin yliopisto
+              </div>
             </div>
-        </section>
+            <div class="koulutus-rivi">
+              <span class="vuosi">Aiemmat</span>
+              <div class="tutkinto">
+                Merkonomi, talous- ja toimistopalvelut.<br>
+                Ylioppilas.
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <section id="yhteystiedot">
-            <h2>YHTEYSTIEDOT</h2>
-            <!-- Sähköposti -->
-            <a href="mailto:sini.jarvelainen@gmail.com" aria-label="Lähetä sähköpostia">
-            <i class="fa-solid fa-envelope"></i>
+        <!-- Lyhyt yhteenveto -->
+        <div class="tagi-sektio">
+          <div class="tagi-ryhma">
+            <span class="tagi-otsikko">Osaaminen:</span>
+            <div class="tagi-lista">
+              <span class="tagi keltainen">Matematiikka</span>
+              <span class="tagi keltainen">Tietotekniikka</span>
+              <span class="tagi keltainen">Opettaminen</span>
+            </div>
+          </div>
+
+          <div class="tagi-ryhma">
+            <span class="tagi-otsikko">Kiinnostuksen kohteet:</span>
+            <div class="tagi-lista">
+              <span class="tagi harmaa">Opetusvideot</span>
+              <span class="tagi harmaa">Digitaaliset oppimateriaalit</span>
+              <span class="tagi harmaa">Ohjelmointi</span>
+              <span class="tagi harmaa">Pelillisyys</span>
+            </div>
+          </div>
+
+          <div class="tagi-ryhma">
+            <span class="tagi-otsikko">Vahvuudet:</span>
+            <div class="tagi-lista">
+              <span class="tagi vaaleankeltainen">Rauhallisuus</span>
+              <span class="tagi vaaleankeltainen">Lempeys</span>
+              <span class="tagi vaaleankeltainen">Uteliaisuus</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palautteet -->
+        <p class="osion-otsikko">Opetuksestani sanottua:</p>
+        <div class="palaute-grid">
+          <div class="palaute-kortti">
+            <p>"Oli kivoja tunteja, opetit hyvin ja selkeästi ja oot tosi mukava!"</p>
+            <cite>Oppilas, 8.lk</cite>
+          </div>
+          <div class="palaute-kortti">
+            <p>"Kiitos!! Olit todella kiva ja autoit todella paljon💗💗"</p>
+            <cite>Oppilas, 8.lk</cite>
+          </div>
+          <div class="palaute-kortti">
+            <p>"Kiitos valtavasti näistä tunneista. Oli ihanaa kuinka paljon heittäydyit ja sait selitettyy asiat hyvin. -- "</p>
+            <cite>Oppilas, 8.lk</cite>
+          </div>
+          <div class="palaute-kortti">
+            <p>"tietotekniikka oli hauskaa"</p>
+            <cite>Oppilas, 7.lk</cite>
+          </div>
+          <div class="palaute-kortti">
+            <p>"Tästä oli apua yhtälöiden opetteluun!"</p>
+            <cite>Kommentti YouTube-videoon</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO-OSIO -->
+    <section id="portfolio">
+      <div class="section-container">
+        <p class="osion-otsikko">> PORTFOLIO</p>
+
+        <div class="portfolio-grid">
+
+          <!-- MatikkaTube -->
+          
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/matikkatube.png" alt="MatikkaTube">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>MatikkaTube</h3>
+              <p>
+                Selkeitä ja kiinnostavia video-oppimateriaaleja lukiolaisille heille tutulla alustalla.
+                Videot sopivat myös kaikille itseopiskelijoille, jotka haluavat kerrata matematiikkaa omaan tahtiin.
+              </p>
+              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">lukion ja yläkoulun matematiikka</span>
+                <span class="tagi harmaa">opetusvideot</span>
+                <span class="tagi harmaa">opettaminen</span>
+                <span class="tagi vaalea">YouTube</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="https://www.youtube.com/@matikkatube" target="_blank" class="linkki-btn"><i class="fa-brands fa-youtube"></i>
+                  YouTubeen
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Matematiikkapeli -->
+          
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/matikkapeli.png" alt="Matematiikkapeli">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>Matematiikkapeli</h3>
+              <p>Alakoululaiselle tarkoitettu peli, jota pelataan selaimessa.
+                Pelissä harjoitellaan peruslaskutoimituksia.</p>
+              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">alakoulun matematiikka</span>
+                <span class="tagi harmaa">oppimispeli</span>
+                <span class="tagi harmaa">ohjelmointi</span>
+                <span class="tagi vaalea">JavaScript</span>
+                <span class="tagi vaalea">HTML</span>
+                <span class="tagi vaalea">CSS</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="https://jarvsini.github.io/matematiikkapeli/" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Peliin
+                </a>
+                <a href="https://github.com/jarvsini/matematiikkapeli" target="_blank" class="linkki-btn"><i class="fa-brands fa-github"></i>
+                  Koodiin
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- GeoGebra-appletit -->
+
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/geogebra.png" alt="GeoGebra">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>GeoGebra-materiaalit</h3>
+              <p>
+                Dynaamisia harjoituksia,
+                joiden avulla oppilas pääsee itse tutkimaan ja oivaltamaan.
+                Käyttäjä voi tutkia ominaisuuksia liikuttamalla pisteitä sovelmissa.
+                Kokeile esimerkiksi applettia, jolla voi tutkia kolmion kulmien summaa
+                tai tutustu ympyrään liittyviin kulmiin. Kaikki julkiset materiaalini löydät profiilistani.
+              </p>              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">lukion ja yläkoulun matematiikka</span>
+                <span class="tagi harmaa">opettaminen</span>
+                <span class="tagi vaalea">GeoGebra</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="https://www.geogebra.org/m/aekmewje" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Ympyrä
+                </a>
+                <a href="https://www.geogebra.org/m/ztksjdnr" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Kolmio
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Excel-peli -->
+          
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/excelpeli.jpg" alt="Excel-peli">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>Excel-peli</h3>
+              <p>
+                Excel-tiedosto, joka pelillistää Excelin oppimisen. Tiedostossa on tehtäviä, joita tekemällä kerätään timantteja tulostauluun. Tein pelin 7. luokkalaisille, mutta se toimii kaikille, jotka haluavat opetella Excelin perusteita.
+              </p>              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">tietotekniikka</span>
+                <span class="tagi harmaa">opettaminen</span>
+                <span class="tagi harmaa">pelillisyys</span>
+                <span class="tagi vaalea">Excel</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="#" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  pdf tulossa
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bingo-peli -->
+
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="#" alt="kuva tulossa">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>Selaimessa toimiva bingo</h3>
+              <p>
+                Selaimessa pelattava bingo, joka toimii tietokoneella ja puhelimella. Peli on toteutettu tilaustyönä asiakkaalle, ja se on tarkoitettu pelattavaksi osana järjestettyä tapahtumaa.
+              </p>              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">ohjelmointi</span>
+                <span class="tagi vaalea">JavaScript</span>
+                <span class="tagi vaalea">HTML</span>
+                <span class="tagi vaalea">CSS</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="#" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  linkki tulossa
+                </a>
+                <a href="#" target="_blank" class="linkki-btn"><i class="fa-brands fa-github"></i>
+                  linkki tulossa
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lautapeli -->
+
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/lautapeli.jpg" alt="Lautapeli">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>Lautapeli murtoluvuista</h3>
+              <p>
+                Lautapeli murtolukujen opiskeluun ja kertaamiseen.
+                Kohderyhmänä yläkoululaiset, mutta peli sopii myös lukion lyhyeen matematiikkaan.
+                Suunniteltu ja toteutettu ryhmätyönä pedagogisten opintojen matematiikan ainedidaktiikan kurssilla.
+              </p>              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">yläkoulun matematiikka</span>
+                <span class="tagi harmaa">oppimispeli</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="#" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  pdf tulossa
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Kanditutkielma -->
+
+          <article class="projekti-kortti">
+            <div class="projekti-kuva">
+              <img src="images/kanditutkielma.png" alt="Kanditutkielma">
+            </div>
+            
+            <div class="projekti-sisalto">
+              <h3>Kirjallisuuskatsaus konvekseihin funktioihin</h3>
+              <p>
+                Kandidaatintutkielmani, joka käsittelee konvekseja funktioita.
+                Olen kirjoittanut työn siten, että se toimii myös oppimateriaalina yliopisto-opiskelijalle.
+              </p>              
+              <div class="projekti-tagit">
+                <span class="tagi harmaa">yliopiston matematiikka</span>
+                <span class="tagi vaalea">LaTeX</span>
+              </div>
+
+              <div class="projekti-linkit">
+                <a href="assets/tutkielma.pdf" target="_blank" class="linkki-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Avaa pdf
+                </a>
+              </div>
+            </div>
+          </article>
+
+          </div>
+      </div>
+    </section>
+
+    <!-- YHTEYSTIEDOT -->
+    <section id="contact">
+      <div class="section-container">
+        <p class="osion-otsikko">> YHTEYSTIEDOT</p>
+        
+        <div class="contact-content">
+          <p>
+            Etsitkö opettajaa, sijaisopettajaa, tukiopettajaa tai tekijää oppimateriaali- tai tietotekniikan projektiin?
+          </p>
+          <p>Laita viestiä, niin jutellaan lisää!</p>
+
+          <div class="email-section">
+            <a href="mailto:sini.jarvelainen@gmail.com">
+              <i class="fa-regular fa-envelope"></i>
             </a>
             <span>sini.jarvelainen@gmail.com</span>
+          </div>
 
-            <br>
+          <p>💬 Ota rohkeasti yhteyttä! Olipa kyseessä yhteistyöidea, kysymys, ajatustenvaihto tai mitä vain.</p>
 
-            <!-- Youtube-->
-            <a href="https://youtube.com/@matikkatube" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-            <span>MatikkaTube</span>
-            <br>
+        </div>
+      </div>
+    </section>
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/ssihni" target="_blank" rel="noopener noreferrer" aria-label="Avaa Instagram">
-            <i class="fa-brands fa-instagram"></i>
+  </main>
+
+  <!-- ALAPALKKI -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-promo">
+          <p>Tue minua ja tilaa kanavani:</p>
+          <a href="https://youtube.com" target="_blank">
+            <img src="images/ytbanneri.png" alt="MatikkaTube-banneri" class="footer-banner">
+          </a>
+        </div>
+        
+        <div class="footer-socials">
+          <p>Sosiaalinen media:</p>
+          <div class="social-icons">
+            <a href="https://www.youtube.com/@matikkatube" target="_blank"><i class="fa-brands fa-youtube social-yt"></i></a>
+            <a href="https://www.instagram.com/ssihni" target="_blank"><i class="fa-brands fa-instagram social-ig"></i></a>
+            <a href="https://github.com/jarvsini" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.geogebra.org/u/sinijarvelainen" target="_blank">
+            <img src="images/Geogebra.svg.png" alt="GeoGebra">
             </a>
-            <span>ssihni</span>
+          </div>
+        </div>
+        
+      </div>
 
-            <br>
+      <hr class="footer-divider">
 
-            <!-- github -->
-            <a href="https://github.com/jarvsini" target="_blank"><i class="fab fa-github"></i></a>
-            <span>jarvsini</span>
-    </main>
-    <footer><i class="fa-regular fa-copyright"></i> 2025 Sini Järveläinen</footer>
-    <!-- efekti: Kursorin liikkeitä seuraamaan -->
-    <div class="cursor-light"></div> 
-    <!-- yhdistää JavaScriptiin -->
-    <script src="script.js"></script>
+      <div class="footer-bottom">
+        <p><i class="fa-regular fa-copyright"></i> Sini Järveläinen 2026</p>
+        <p class="made-with">Made with ❤️ and coffee.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Projektin kuvaa klikkaamalla kuva aukeaa näytölle -->
+  <div id="kuva-modal" class="modal">
+    <span class="sulje">&times;</span>
+    <img class="modal-sisalto" id="suurennettu-kuva">
+  </div>
+  
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>

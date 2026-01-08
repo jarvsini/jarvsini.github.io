@@ -1,355 +1,793 @@
-/* Gooogle font */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400&family=Kalam:wght@300&family=Poppins:wght@200;300;400;500&display=swap');
+/* Perusasetukset */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    font-family: Poppins, sans-serif; /* jälkimmäinen on varafontti, jos ensimmäisen haku epäonnistuu*/
-    font-size: 1.2rem; /* Fonttikoko suhteessa oletusfonttiin eli hieman suurempi */
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.6;
+  color: #222;
+  /* Asetetaan koko sivun taustaväri tässä */
+  background-color: #fefbef;
 }
 
-h2 {
-    font-size: clamp(2rem, 10vw, 5.2rem); /* Koko skaalautuu näytän mukaan, min ja max määritelty */
-    font-weight: 300;
-}
+/* HEADER YLÄPALKKI */
 
-/* Header kokonaisuutena kiinteä ja läpinäkyvä */
 header {
-    position: fixed;
-    top: 0;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+/* Hampurilaisikoni piilossa oletuksena (tietokoneella) */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Jakaa osat vasemmalle, keskelle ja oikealle */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* Tärkeä mobiilivalikon sijoittelun kannalta */
+}
+
+/* Oletuksena mobiili-koti on piilossa */
+.mobiili-koti {
+  display: none;
+}
+
+/* Vasen: Logo/Nimi */
+.nav-logo {
+  text-align: left;
+  line-height: 1.2;
+  font-size: 1.1rem;
+  text-transform: none;
+}
+
+.nav-logo a {
+  text-decoration: none; /* Poistaa alleviivauksen */
+  color: inherit;        /* Käyttää samaa väriä kuin ympäröivä teksti (musta) */
+  display: block;        /* Tehostaa klikattavaa aluetta */
+}
+
+.nav-logo a:hover {
+  opacity: 0.8;          /* Lisää pienen visuaalisen palautteen, kun hiiri on päällä */
+}
+/* Varmistetaan, että nav-menu käyttäytyy tietokoneella "näkymättömästi" */
+.nav-menu {
+  display: flex;
+  flex: 1; /* Ottaa tilan logon jälkeen */
+  justify-content: space-between; /* Työntää linkit keskelle ja YT:n oikealle */
+  align-items: center;
+}
+
+/* Keski: Linkkilista */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem; /* Väli linkkien välillä */
+  margin: 0 auto; /* Tämä maaginen rivi keskittää linkit nav-menun sisällä */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  /* Lisätään transition, jotta muutos on pehmeä eikä välähdys */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent; /* Varataan tila valmiiksi */
+  padding-bottom: 4px
+}
+
+.nav-links a:hover {
+  color: #e64a19; /* Käytetään samaa oranssia kuin YouTube-ikonissa */
+  border-bottom: 2px solid #e64a19; /* Lisää viivan tekstin alle */
+}
+
+/* Oikea: YouTube-painike */
+
+.yt-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  gap: 0.5rem;
+}
+
+.yt-icon {
+  color: #e64a19; /* Oranssinpunainen */
+  font-size: 1.8rem; /* Säädä kokoa tästä */
+  transition: transform 0.2s ease;
+  display: flex; /* Keskittää ikonin napin sisällä */
+}
+
+.yt-button:hover .yt-icon {
+  transform: scale(1.1); /* Pieni suurennusefekti, kun hiiri on päällä */
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Näytetään ikoni */
+  }
+  /* Piilotetaan nimimerkki ja jätetään pelkkä yt-kuvake*/
+  .yt-teksti {
+    display: none;
+  }
+  /* Tehdään ikonista hieman isompi, jotta se on helppo peukalo-osuma */
+  .yt-icon {
+    font-size: 2rem;
+    padding: 5px;
+  }
+
+  /* Varmistetaan että ikonit erottuvat */
+  .menu-icon, .yt-icon {
+    background: rgba(255, 255, 255, 0.5); /* Kevyt "huurre" ikonien alla, jos tausta on levoton */
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  /* Piilotetaan varsinainen logo ja näytetään ETUSIVU-teksti */
+  .logo-teksti {
+    display: none;
+  }
+
+  .nav-menu.active .mobiili-koti {
+    display: block;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .nav-menu {
+    display: none; /* Piilotetaan valikko oletuksena */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Aukeaa heti headerin alapuolelle */
+    left: 0;
     width: 100%;
-    z-index: 1000;
-    background: transparent;
-}
+    background-color: #ffffff;
+    padding-top: 2rem;
+    margin-left: 0; /* Poistetaan tietokonenäkymän marginaali */
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 999;
+  }
 
-/* Ylärivi */
-.ylapalkki {
+  /* Kun valikko on aktiivinen (JS lisää tämän luokan) */
+  .nav-menu.active {
     display: flex;
-    justify-content: space-between;
+  }
+
+  .nav-links {
+    flex-direction: column;
     align-items: center;
-    padding: 0.5rem 1rem;
-    background: transparent;
+    gap: 1.5rem;
+    margin: 0 0 2rem 0;
+  }
+
+  /* 1. Tehdään headerista läpinäkyvä */
+  header {
+    padding: 0 1rem;
+    background-color: transparent;
+    border-bottom: none; /* Poistetaan harmaa viiva */
+  }
 }
 
-.kotilinkki img {
-    height: 2rem;
-    transition: transform 0.2s ease;
+/* KAIKKI OSIOT */
+/* Levitetään taustaväri koko leveydelle */
+section {
+  width: 100%;
+  padding: 4rem 2rem;
+  min-height: 40vh; /* Antaa hieman ilmaa osioiden välille */
 }
-.kotilinkki img:hover {
-    transform: scale(1.2);
+/* Keskitetään varsinainen sisältö */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* TÄMÄ keskittää sisällön */
+  display: flex;
+  flex-direction: column;
+}
+.osion-otsikko {
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffbc1e;
+  font-size: 2rem;
+  margin: 1rem 0 2rem 0;
 }
 
-.somelinkit {
+@media (max-width: 768px) {
+  section {
+    padding: 1.9rem 1rem;
+  }
+  .osion-otsikko {
+    font-size: 1.5rem;
+  }
+}
+
+/* YKSITTÄISET OSIOT */
+
+/* HOME-OSIO */
+#home {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-section-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* TÄMÄ keskittää sisällön */
+  display: flex;
+  flex-direction: column;
+}
+
+.sisalto {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+/* Vasen puoli: Tekstilaatikko */
+.tekstilaatikko {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.kuvausteksti {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.home-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+/* Yleiset asetukset home-osion napeille */
+#home .btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.2s ease;
+  border: 2px solid #444;
+}
+
+/* Portfolio-nappi */
+.portfolio-btn {
+  background-color: #ffffff;
+  color: #444;
+  box-shadow: 3px 3px 0px #444;
+  margin-right: 1rem;
+}
+
+/* Contact-nappi */
+.contact-btn {
+  background-color: #666;
+  color: #ffffff;
+  border-color: #444;
+  box-shadow: 3px 3px 0px #222;
+}
+
+.portfolio-btn:hover {
+  background-color: #f0f0f0;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #444;
+}
+
+.contact-btn:hover {
+  background-color: #555;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #222;
+}
+
+/* Klikkaus-efekti molemmille */
+#home .btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px transparent;
+}
+
+/* Oikea puoli: Profiilikuva */
+.profiilikuva img {
+  height: 100%;
+  max-height: 300px;  /* Mutta se ei kasva tätä suuremmaksi */
+  width: auto;
+  border-radius: 500px;
+}
+
+@media (max-width: 768px) {
+  .sisalto {
+    flex-direction: column-reverse; /* Kuva tekstin yläpuolelle mobiilissa */
+    align-items: center;
+    gap: 2rem;
+  }
+  .profiilikuva img {
+    height: 30vh;
+  }
+  .home-buttons {
+    justify-content: center;
+  }
+}
+
+/* --- ABOUT-OSIO --- */
+
+.about-grid {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.about-teksti {
+  flex: 3;
+  text-align: left;
+}
+
+.about-teksti p {
+  margin-bottom: 1.2rem;
+}
+
+.korostus-oranssi {
+  color: #f97f32;
+  font-weight: bold;
+}
+
+/* Koulutuslaatikko */
+.koulutus-laatikko {
+  flex: 2;
+  background-color: #8e8989;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.koulutus-laatikko h3 {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.5rem;
+}
+
+.koulutus-rivi {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.vuosi {
+  font-weight: bold;
+  color: #ffd61e;
+  min-width: 60px;
+}
+.tutkinto {
+  color: #ffffff;
+}
+
+/* Tagit */
+.tagi-sektio {
+  margin: 3rem 0;
+  text-align: left;
+}
+
+.tagi-ryhma {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tagi-otsikko {
+  font-weight: bold;
+  min-width: 180px;
+}
+
+.tagi-lista {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tagi {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.keltainen { background-color: #fce181; color: #333; }
+.harmaa { background-color: #8e8989; color: white; }
+.vaaleankeltainen { background-color: #fff2cc; color: #333; border: 1px solid #fce181; }
+
+/* Palautteet */
+
+.palaute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.palaute-kortti {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+  text-align: left;
+  border-left: 4px solid #fce181;
+}
+
+.palaute-kortti p {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.palaute-kortti cite {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* MOBIILI */
+@media (max-width: 850px) {
+  .about-grid {
+    flex-direction: column;
+  }
+  
+  .tagi-ryhma {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .tagi-otsikko {
+    margin-bottom: 0.5rem;
+  }
+  .palaute-grid {
+    /* Muutetaan minmax-arvoa pienemmäksi (esim. 150px), jotta kaksi korttia mahtuu rinnakkain */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem; /* Pienennetään väliä mobiilissa tilan säästämiseksi */
+  }
+
+  .palaute-kortti {
+    /* Poista tai nosta max-width, jotta kortti täyttää sille annetun uuden kapean sarakkeen */
+    max-width: none; 
+    padding: 1rem;
+  }
+}
+
+/* --- PORTFOLIO-OSIO --- */
+#portfolio {
+  background-color: #e7dfd3;
+}
+.portfolio-grid {
+    display: grid;
+    /* Luo sarakkeita automaattisesti, vähintään 350px leveitä */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+.projekti-kortti {
+    background: #fffdf9;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden; /* Varmistaa että kuva ei mene kulmien yli */
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projekti-kortti:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.projekti-kuva img {
+    width: 100%;
+    height: 200px;
+    aspect-ratio: 16 / 9;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.projekti-sisalto {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Pakottaa sisällön täyttämään kortin, vaikka tekstiä olisi vähän */
+}
+
+.projekti-sisalto h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.projekti-sisalto p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+/* Tagit kortin sisällä */
+.projekti-tagit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.projekti-tagit .tagi {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+}
+
+.tagi.vaalea {
+    background-color: #d3d0cf;
+    color: #333;
+}
+
+/* Projektin painikkeet */
+.projekti-linkit {
     display: flex;
     gap: 1rem;
-}
-.somelinkit a {
-    font-size: 1.4rem;
-    color: white;
-    transition: color 0.3s;
-}
-.somelinkit a:hover {
-    color: #fedd58;
+    margin-top: auto; /* Työntää linkit aina kortin pohjalle */
 }
 
-/* Alempi rivi: valikkopalkki */
-.valikkopalkki {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.linkki-btn {
+    text-decoration: none;
+    color: #000;
+    border: 2px solid #000;
     padding: 0.5rem 1rem;
-    background: transparent;
-    padding-right: 5%;
-}
-
-/* Hampurilaiskuvake */
-.hampurilaiskuvake {
-    font-size: 2.5rem;
-    color: rgb(9, 20, 81);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    padding: 0.5rem 1.2rem;
-    background: rgba(255, 255, 255, 0.4); /* läpinäkyvä tumma tausta */
-    border-radius: 1rem;
-    backdrop-filter: blur(4px); /* hieno blur */
-}
-.hampurilaiskuvake:hover {
-    transform: scale(1.2);
-}
-
-/* Navigaatio (piilotettuna) */
-nav ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100%;
-    right: 1rem;
-    background: rgba(234, 240, 243, 0.5); /* vaalea pehmeä tausta */
-    backdrop-filter: blur(8px);
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: max-content;
-    padding: 1rem 2rem;
-    margin-top: 0.5rem;
-    z-index: 999;
-    animation: fadeInMenu 0.3s ease-out forwards;
-}
-
-nav ul.show {
-    display: flex;
-}
-
-/* Linkit valikossa */
-nav ul li {
-    list-style: none;
-    margin: 0.5rem 0;
-}
-
-nav ul li a {
-    color: rgb(9, 20, 81); /* sama sininen kuin hampurilaisessa */
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #75adf5; /* korostusväri hoverissa */
-}
-
-/* Avautumis-efekti */
-@keyframes fadeInMenu {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Sectioneiden yleiset asetukset */
-section {
-    width: 100%; /* Taustaväri täyttää koko näytön */
-    overflow: hidden;
-}
-
-/* Koti-osio */
-#koti-section {
-    background: linear-gradient(180deg, #000000, #24221f, #000000);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#koti {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1400px;
-    position: relative;
-}
-#koti img {
-    width: clamp(1000px, 90%, 1500px);
-    padding-top: 5%;
-}
-
-/* Nappulat vasempaan reunaan */
-.etusivunapit {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    z-index: 10;
-}
-
-.etusivunapit a {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fdfaf2;
-    padding: 0.6rem 1.2rem;
-    border-radius: 1.5rem;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    text-align: center;
-}
-
-.etusivunapit a:hover {
-    background-color: #1b0b75;
-    color: black;
-    transform: scale(1.05);
-}
-
-.liukuupaikalle-efekti {
-    opacity: 0;
-    transform: translateY(-60px);
-    animation: fadeInSlideDown 1s ease-out forwards;
-    animation-delay: 0.5s; /* Viive halutessasi */
-}
-
-@keyframes fadeInSlideDown {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* PORTFOLIO */
-#projektit {
-    background: linear-gradient(180deg, #2c2828, #a6a19a, #c6bfbf);
-    padding-bottom: 2rem;
-}
-
-.projektit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: ;
-}
-
-.projekti {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 1rem;
-    padding: 1rem;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease;
-}
-
-.projekti:hover {
-    transform: translateY(-5px);
-}
-
-.projekti img {
-    width: 100%;
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.projekti h3 {
-    margin: 0.5rem 0 0.2rem;
-    font-size: 1.2rem;
-    color: #1a1917;
-}
-
-.projekti p {
-    font-size: 0.95rem;
-    color: #3e3a3a;
-}
-
-.projekti a {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: #4c4b44;
+    border-radius: 10px;
     font-weight: bold;
-    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
 }
 
-#yhteystiedot {
-    background-color: #1a1b1c;
-    color: #f3e5c4;
+.linkki-btn:hover {
+    background-color: #e1dede;
 }
 
-#yhteystiedot a {
-    color: rgb(212, 183, 105);
-    text-decoration: none;
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
+/* PROJEKTIEN KUVAT VOIDAAN AVATA */
+/* Modal-tausta */
+.modal {
+    display: none; /* Piilotettu oletuksena */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); /* Tumma tausta */
+    cursor: zoom-out;
 }
 
-#yhteystiedot i {
-    font-size: 1.5rem; /* Isommat ikonit */
-    transition: color 0.3s;
+/* Itse kuva */
+.modal-sisalto {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 3px solid white;
+    border-radius: 5px;
 }
 
-#yhteystiedot a:hover i {
-    color: rgb(255, 240, 221); /* Vaihtaa väriä hoverilla */
+/* Sulkunappi */
+.sulje {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
 }
+
+/* --- YHTEYSTIEDOT-OSIO --- */
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left; /* Pidetään linjassa muun sivuston tekstien kanssa */
+}
+
+.email-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Kirjekuori-ikoni linkkinä */
+.email-section a {
+  text-decoration: none;
+  color: #444;
+  font-size: 2rem; /* Kuvakkeen koko */
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.email-section a:hover {
+  color: #f97f32; /* Vaihtuu oranssiksi hoverissa */
+  transform: scale(1.1);
+}
+
+/* Sähköpostiosoite tekstinä (ei klikattava) */
+.email-section span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  user-select: all; /* Helpottaa kopiointia: yksi klikkaus valitsee koko osoitteen */
+}
+
+/* Alahuomautus-teksti */
+.contact-content p:last-child {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+  border-top: 1px solid #eee; /* Haalea viiva yläpuolella */
+  padding-top: 1rem;
+}
+
+/* MOBIILI */
+@media (max-width: 768px) {
+
+  .email-section {
+    flex-direction: row; /* Pidetään ikoni ja teksti vierekkäin */
+    gap: 1rem;
+  }
+
+  .email-section a {
+    font-size: 2rem;
+  }
+
+  .email-section span {
+    font-size: 1rem; /* Pienennetään hieman, jotta mahtuu kapeille näytöille */
+    word-break: break-all; /* Estää osoitetta valumasta ruudun yli */
+  }
+}
+
+/* --- FOOTER --- */
 
 footer {
-    background-color: #141415;
-    color: #f9f1cf;
-    border-top-style: inset;
-    font-size: 1rem;
+  background-color: #ffffff;
+  padding: 4rem 2rem 2rem 2rem;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-promo p, .footer-socials p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-banner {
+  width: clamp(350px, 50vw, 600px);
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.social-icons a {
+  color: #444;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+}
+
+/* Erityisvärit ikonien hoveriin */
+.social-icons a:hover { transform: scale(1.1); }
+.social-yt:hover { color: #FF0000; }
+.social-ig:hover { color: #E1306C; }
+
+/* GeoGebra kuvana, joten sen asetukset erikseen */
+.social-icons img {
+  width: 1.8rem; /* Sama koko kuin font-size muilla ikoneilla */
+  height: 1.8rem;
+  vertical-align: middle;
+  margin-bottom: 9px;
+  /* Muutetaan kuva harmaaksi ja säädetään tummuutta */
+  filter: grayscale(100%) brightness(0.3); 
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover-efekti: palautetaan värit tai vaihdetaan teemaväriin */
+.social-icons a:hover img {
+  transform: scale(1.1);
+  /* Poistetaan harmaus, jolloin alkuperäiset värit tulevat näkyviin */
+  filter: grayscale(0%) brightness(1); 
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.80rem;
+  color: #666;
+}
+
+/* MOBIILI */
+@media (max-width: 768px) {
+  footer {
     padding: 2rem;
-}
-
-/* mobiilinäkymä */
-@media screen and (max-width: 768px) {
-    .valikkopalkki {
-        padding-right: 1rem;
-    }
-    /* ETUSIVU */
-    .etusivunapit {
-        display: none;
-    }
-
-    /* MINUSTA-OSIO */
-    .esittely {
-        flex-direction: column; /* responsiivisuus: kuva hyppää tekstin päälle */
-        width: 100%;
-        gap: 0;
-    }
-
-    .esittelyteksti h2 {
-        margin: 0;
-    }
-
-    /* PROJEKTIT-OSIO */
-    .projekti-teksti {
-        opacity: 1; /* Teksti näkyy aina */
-        background: rgba(0, 0, 0, 0.7);
-        height: 20%;
-        bottom: 40%;
-        width: 90%;
-        left: 1rem;
-        font-size: 1.2rem;
-        border-radius: 2rem;
-    }
-
-    /* KOULUTUS JA KOKEMUS -OSIOT */
-    .degree {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    .year {
-        padding: 0;
-    }
-
-}
-
-.cursor-light {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 4rem;
-  height: 4rem;
-  pointer-events: none; /* estää klikkauksen estymisen */
-  background: radial-gradient(circle, rgba(255, 251, 231, 0.4), transparent 80%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  mix-blend-mode:lighten;
-}
-.scroll-efekti {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.6s ease, transform 1.6s ease;
-}
-
-.scroll-efekti.nakyva {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/** linkkien klikkaaminen vierittää sivua pehmeästi **/
-html {
-    scroll-behavior: smooth;
+  }
+  .footer-top {
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-banner {
+    width: clamp(100px, 80vw, 600px);
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    font-size: 1.5rem;
+  }
 }
