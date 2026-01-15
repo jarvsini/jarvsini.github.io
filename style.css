@@ -17,6 +17,12 @@ body {
   /* Asetetaan koko sivun taustaväri tässä */
   background-color: #fefbef;
 }
+/* Pienempi riviväli mobiilissa */
+@media (max-width: 768px) {
+  body {
+      line-height: 1.2; /* Oletus on usein 1.5 tai 1.6 */
+  }
+}
 
 /* HEADER YLÄPALKKI */
 
