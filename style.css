@@ -446,10 +446,10 @@ section {
 }
 
 .palaute-kortti p {
-  font-style: italic;
   font-size: 0.9rem;
   margin-bottom: 0.8rem;
 }
+
 
 .palaute-kortti cite {
   font-size: 0.8rem;
